@@ -5,8 +5,9 @@ from config import TOKEN
 import time
 import script
 
+# setup dataset and bot
+dataset = script.DataSet()
 bot = telebot.TeleBot(TOKEN)
-
 
 # Handle '/start' and '/help'
 @bot.message_handler(commands=['help', 'start'])
@@ -16,7 +17,7 @@ Hi there, this bot helps you get a link of your flight, so that your mom doesn't
 """)
 
 
-# Handle all other messages with content_type 'text' (content_types defaults to ['text'])
+# Handle all other messages
 @bot.message_handler(func=lambda message: True)
 def echo_message(message):
     bot.reply_to(message, """This bot can be used only in the chat.
@@ -28,6 +29,7 @@ Examples:
 @FlightLinkBot BGY MDR""")
 
 
+# Handle inline texts
 @bot.inline_handler(lambda query: len(query.query) > 3)
 def text_callback(query):
     message = "✈️ Follow my {} flight from {} to {}:\r\n\r\n{}"
@@ -55,7 +57,7 @@ def text_callback(query):
     bot.answer_inline_query(query.id, results)
 
 
-dataset = script.DataSet()
+# main
 while True:
     try:
         bot.polling(True)
