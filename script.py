@@ -1,14 +1,5 @@
 import pandas as pd
-from difflib import SequenceMatcher
 import re
-import airportsdata
-airports = airportsdata.load('IATA')
-
-# process
-# full name airport -> airport IATA
-# 2x IATA airports -> possible routes with IATA codes
-# routes IATA codes -> info airline
-
 
 class DataSet:
     def __init__(self):
@@ -140,7 +131,8 @@ def find_route(input_str):
 
     return result
 
-
+""" 
+#example
 def main():
     #init dataset
     dataset = DataSet()
@@ -153,3 +145,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+ """

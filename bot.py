@@ -1,6 +1,7 @@
 import logging
 import os
 import script
+from script import DataSet
 
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler
@@ -56,6 +57,9 @@ if __name__ == "__main__":
 
     # Port is given by Heroku
     PORT = os.environ.get('PORT')
+
+    #load the dataset to search a flight
+    dataset = DataSet()
 
     # Enable logging
     logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
