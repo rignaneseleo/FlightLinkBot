@@ -21,7 +21,7 @@ Examples:
 
 
 # Handle inline texts
-def inline_query(update, context) -> None:
+def inline_query(update, context):
     message = "✈️ Follow my {} flight from {} to {}:\r\n\r\n{}"
     #if query.from_user.language_code == 'it':
     #    message = "✈️ Segui il mio volo {} da {} a {}:\r\n\r\n{}"
@@ -67,8 +67,6 @@ if __name__ == "__main__":
     # Add handlers
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, reply))
-
-     # on non command i.e message - echo the message on Telegram
     dp.add_handler(InlineQueryHandler(inline_query))
 
     # Start the webhook
