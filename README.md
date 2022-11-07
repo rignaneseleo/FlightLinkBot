@@ -6,6 +6,9 @@ Type @flightlinkbot \<route keywords\> in any Telegram chat to get a selection o
 The keyword can be the city name, the departure or arrival airport code, or any combination of these.\
 They can be separated by space or a dash.
 
+## BOT
+👉🏻 https://t.me/FlightLinkBot
+
 ### Examples
 
 `@flightlinkbot EWR LHR`\
