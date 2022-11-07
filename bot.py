@@ -22,7 +22,9 @@ Examples:
 @FlightLinkBot BGY - Madrid
 @FlightLinkBot BGY MDR
 
-Credits: @rignaneseleo ✌🏻""")
+Credits: @rignaneseleo ✌🏻
+Code: https://github.com/rignaneseleo/FlightLinkBot""")
+
 
 
 # Handle inline texts
