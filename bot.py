@@ -13,7 +13,6 @@ def start(update, context):
         
 Type @FlightLinkBot in any chat to instanly get a link of your flight.
     
-    
 Examples:
 @FlightLinkBot Milan Madrid
 @FlightLinkBot BGY - Madrid
