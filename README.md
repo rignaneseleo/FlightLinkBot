@@ -1,16 +1,18 @@
 # Flight Tracker Bot - Get the tracking link of any flight
-Get the tracking link of any flight easily from Telegram chat. ✈️
+Get the tracking link of any flight easily from Telegram chat ✈️
 
 ## Usage
 Type @flightlinkbot \<route keywords\> in any Telegram chat to get a selection of flights matching the keywords.\
 The keyword can be the city name, the departure or arrival airport code, or any combination of these.\
 They can be separated by space or a dash.
 
-Example:\
-@flightlinkbot EWR LHR\
-@flightlinkbot EWR - LHR\
-@flightlinkbot Milan - BRL\
-@flightlinkbot Milan - new york
+### Examples
+
+`@flightlinkbot EWR LHR`\
+`@flightlinkbot EWR - LHR`\
+`@flightlinkbot Milan - BRL`\
+`@flightlinkbot Milan - new york`
+
 
 
 
