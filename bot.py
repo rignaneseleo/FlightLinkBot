@@ -69,6 +69,7 @@ def inline_query(update, context):
 
     if len(results) == 0:
         results.append(InlineQueryResultArticle(
+            thumb_url="https://raw.githubusercontent.com/rignaneseleo/FlightLinkBot/main/res/error.png"
             id=0,
             title="No flights found, try with a different query",
             input_message_content=InputTextMessageContent("-")
