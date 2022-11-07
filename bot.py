@@ -25,7 +25,7 @@ Credits: @rignaneseleo ✌🏻""")
 
 # Handle inline texts
 def inline_query(update, context):
-    message = "✈️ Follow my {} flight from {} to {}:\r\n\r\n{}"
+    message = "✈️ Follow this {} flight from {} to {}:\r\n\r\n{}"
     #if query.from_user.language_code == 'it':
     #    message = "✈️ Segui il mio volo {} da {} a {}:\r\n\r\n{}"
     text = update.inline_query.query
