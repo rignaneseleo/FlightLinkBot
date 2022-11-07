@@ -13,7 +13,7 @@ def start(update, context):
 
 # Handle all other messages
 def reply(update, context):
-    update.effective_message.reply_text("""Use @FlightLinkBot in any chat to instanly get a link of your flight so your mom can track it and doesn't get worried.
+    update.effective_message.reply_text("""Type @FlightLinkBot in any chat to instanly get a link of your flight.
     
 Examples:
 @FlightLinkBot Milan Madrid
