@@ -62,13 +62,13 @@ def inline_query(update, context):
 
         )
         results.append(r)
-
     print("Found "+str(len(results))+" results to query: " + text)
+    
     if len(results) == 0:
         results.append(InlineQueryResultArticle(
             id=0,
-            title="No flights found",
-            input_message_content=InputTextMessageContent("")
+            title="No flights found, try with a different query",
+            input_message_content=InputTextMessageContent("-")
         ))
 
     # show the choices
