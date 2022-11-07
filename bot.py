@@ -9,17 +9,18 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, Inlin
 
 def start(update, context):
     update.effective_message.reply_text(
-        "Hi there, this bot helps you get a link of your flight, so that your mom doesn't get worried!")
+        "Hi there, this bot helps you get a link of your flight, so that your mom can track it and doesn't get worried!")
 
 # Handle all other messages
 def reply(update, context):
-    update.effective_message.reply_text("""This bot can be used only in the chat.
-Use @FlightLinkBot in the chat to get a link of your flight.
+    update.effective_message.reply_text("""Use @FlightLinkBot in any chat to instanly get a link of your flight so your mom can track it and doesn't get worried.
     
 Examples:
 @FlightLinkBot Milan Madrid
 @FlightLinkBot BGY - Madrid
-@FlightLinkBot BGY MDR""")
+@FlightLinkBot BGY MDR
+
+Credits: @rignaneseleo ✌🏻""")
 
 
 # Handle inline texts
