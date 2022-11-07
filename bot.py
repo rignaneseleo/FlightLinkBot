@@ -1,4 +1,3 @@
-from config import TOKEN
 import logging
 import os
 
@@ -14,8 +13,9 @@ def echo(update, context):
 
 
 if __name__ == "__main__":
-    #heroku app name
+    # heroku app name
     NAME = "flight-link-bot"
+    TOKEN = os.environ['TOKEN']
 
     # Port is given by Heroku
     PORT = os.environ.get('PORT')
