@@ -2,7 +2,8 @@ import logging
 import os
 import script
 
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler, InlineQueryResultArticle, InputTextMessageContent
+from telegram import InlineQueryResultArticle, InputTextMessageContent
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler
 
 
 def start(update, context):
