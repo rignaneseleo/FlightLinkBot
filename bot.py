@@ -34,7 +34,7 @@ def inline_query(update, context):
     routes = script.find_route(text)
     results = []
 
-    for route in routes:
+    for route in routes[0:50]:
         r = InlineQueryResultArticle(
             # The id of our inline result
             thumb_url=route.getIconUrl(),
