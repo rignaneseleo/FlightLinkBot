@@ -21,6 +21,7 @@ Examples:
 Code: https://github.com/rignaneseleo/FlightLinkBot
 Credits: @rignaneseleo ✌🏻"""
         )
+    update.effective_message.reply_video("https://raw.githubusercontent.com/rignaneseleo/FlightLinkBot/main/res/example.mp4")
 
 # Handle all other messages
 
@@ -35,6 +36,8 @@ Examples:
 
 Code: https://github.com/rignaneseleo/FlightLinkBot
 Credits: @rignaneseleo ✌🏻""")
+
+
 
 
 
@@ -63,7 +66,7 @@ def inline_query(update, context):
         )
         results.append(r)
     print("Found "+str(len(results))+" results to query: " + text)
-    
+
     if len(results) == 0:
         results.append(InlineQueryResultArticle(
             id=0,
