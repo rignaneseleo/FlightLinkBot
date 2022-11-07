@@ -73,7 +73,7 @@ if __name__ == "__main__":
     # Add handlers
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, reply))
-    dp.add_handler(InlineQueryHandler(inline_query))
+    dp.add_handler(InlineQueryHandler(inline_query, pattern="^.{3,}$"))
 
     # Start the webhook
     updater.start_webhook(listen="0.0.0.0",
