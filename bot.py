@@ -72,7 +72,7 @@ def inline_query(update, context):
             thumb_url="https://raw.githubusercontent.com/rignaneseleo/FlightLinkBot/main/res/error.png",
             id=0,
             title="No flights found, try with a different query",
-            input_message_content=InputTextMessageContent("-")
+            input_message_content=InputTextMessageContent(text)
         ))
 
     # show the choices
