@@ -1,66 +1,40 @@
-#!/usr/bin/python
-import telebot
-from telebot import types
 from config import TOKEN
-import time
-import script
+import logging
+import os
 
-# setup dataset and bot
-dataset = script.DataSet()
-bot = telebot.TeleBot(TOKEN)
-
-# Handle '/start' and '/help'
-@bot.message_handler(commands=['help', 'start'])
-def send_welcome(message):
-    bot.reply_to(message, """\
-Hi there, this bot helps you get a link of your flight, so that your mom doesn't get worried!
-""")
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
-# Handle all other messages
-@bot.message_handler(func=lambda message: True)
-def echo_message(message):
-    bot.reply_to(message, """This bot can be used only in the chat.
-Use @FlightLinkBot in the chat to get a link of your flight.
-    
-Examples:
-@FlightLinkBot Milan Madrid
-@FlightLinkBot BGY - Madrid
-@FlightLinkBot BGY MDR""")
+def start(update, context):
+    update.effective_message.reply_text("Hi!")
 
 
-# Handle inline texts
-@bot.inline_handler(lambda query: len(query.query) > 3)
-def text_callback(query):
-    message = "✈️ Follow my {} flight from {} to {}:\r\n\r\n{}"
-    if query.from_user.language_code == 'it':
-        message = "✈️ Segui il mio volo {} da {} a {}:\r\n\r\n{}"
-    text = query.query
-    routes = script.find_route(text)
-    results = []
-
-    for route in routes:
-        r = types.InlineQueryResultArticle(
-            # The id of our inline result
-            thumb_url=route.getIconUrl(),
-            id=routes.index(route),
-            title="[%s] %s (%s) - %s (%s)" % (route.code_IATA,
-                                              route.departure_airport.city, route.departure_airport.code_iata,
-                                              route.arrival_airport.city, route.arrival_airport.code_iata),
-            input_message_content=types.InputTextMessageContent(message
-                                                                .format(route.airline.name, route.departure_airport.city, route.arrival_airport.city, route.getFlightAwareLink())
-                                                                )
-        )
-        results.append(r)
-    print("Sending results to query " + query.query)
-    # show the choices
-    bot.answer_inline_query(query.id, results)
+def echo(update, context):
+    update.effective_message.reply_text(update.effective_message.text)
 
 
-# main
-while True:
-    try:
-        bot.polling(True)
-    except Exception as e:
-        print(e)
-        time.sleep(5)
+if __name__ == "__main__":
+    #heroku app name
+    NAME = "flight-link-bot"
+
+    # Port is given by Heroku
+    PORT = os.environ.get('PORT')
+
+    # Enable logging
+    logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                        level=logging.INFO)
+    logger = logging.getLogger(__name__)
+
+    # Set up the Updater
+    updater = Updater(TOKEN)
+    dp = updater.dispatcher
+    # Add handlers
+    dp.add_handler(CommandHandler('start', start))
+    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
+
+    # Start the webhook
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=TOKEN,
+                          webhook_url=f"https://{NAME}.herokuapp.com/{TOKEN}")
+    updater.idle()
