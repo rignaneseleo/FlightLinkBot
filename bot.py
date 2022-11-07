@@ -9,7 +9,19 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, Inlin
 
 def start(update, context):
     update.effective_message.reply_text(
-        "Hi there, this bot helps you get a link of your flight, so that your mom can track it and doesn't get worried!")
+        """Hi there, this bot helps you get a link of your flight, so that your mom can track it and doesn't get worried 😌
+        
+Type @FlightLinkBot in any chat to instanly get a link of your flight.
+    
+    
+Examples:
+@FlightLinkBot Milan Madrid
+@FlightLinkBot BGY - Madrid
+@FlightLinkBot BGY MDR
+
+Code: https://github.com/rignaneseleo/FlightLinkBot
+Credits: @rignaneseleo ✌🏻"""
+        )
 
 # Handle all other messages
 
@@ -22,8 +34,8 @@ Examples:
 @FlightLinkBot BGY - Madrid
 @FlightLinkBot BGY MDR
 
-Credits: @rignaneseleo ✌🏻
-Code: https://github.com/rignaneseleo/FlightLinkBot""")
+Code: https://github.com/rignaneseleo/FlightLinkBot
+Credits: @rignaneseleo ✌🏻""")
 
 
 
