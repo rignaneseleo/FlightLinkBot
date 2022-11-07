@@ -19,7 +19,9 @@ They can be separated by space or a dash.
 
 
 
-## References
+## References & Credits
 - Airline logos: https://github.com/sexym0nk3y/airline-logos
 - Airports & routes: https://data.flightairmap.com
 - City name - airports: https://datahub.io/core/airport-codes#data
+- Icon not found: gungyoga04
+- Image bot: Dima Kolchanov
