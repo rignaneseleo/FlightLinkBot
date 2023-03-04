@@ -105,8 +105,9 @@ if __name__ == "__main__":
     dp.add_handler(InlineQueryHandler(inline_query, pattern="^.{3,}$"))
 
     # Start the webhook
-    updater.start_webhook(listen="0.0.0.0",
-                          port=int(PORT),
-                          url_path=TOKEN,
-                          webhook_url=f"https://{NAME}.herokuapp.com/{TOKEN}")
+    updater.start_polling(dp)
+    #updater.start_webhook(listen="0.0.0.0",
+    #                      port=int(PORT),
+    #                      url_path=TOKEN,
+    #                      webhook_url=f"https://{NAME}.herokuapp.com/{TOKEN}")
     updater.idle()
