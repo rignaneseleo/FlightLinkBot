@@ -7,6 +7,13 @@ from telegram import InlineQueryResultArticle, InputTextMessageContent
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler
 
 
+#server setup
+PORT = os.environ.get('PORT', 8443)
+SERVER_URL = 'https://flightlinkbot-production.up.railway.app/'
+TOKEN = os.environ['TOKEN'] 
+
+
+
 def start(update, context):
     update.effective_message.reply_text(
         """Hi there, this bot helps you get a link of your flight, so that your mom can track it and doesn't get worried 😌
@@ -79,15 +86,7 @@ def inline_query(update, context):
     update.inline_query.answer(results)
 
 
-if __name__ == "__main__":
-    # heroku app name
-    NAME = "flight-link-bot"
-    # get TOKEN from Heroku Config Vars
-    TOKEN = os.environ['TOKEN']
-
-    # Port is given by Heroku
-    PORT = os.environ.get('PORT')
-
+def main():
     # load the dataset to search a flight
     dataset = DataSet()
 
@@ -105,9 +104,13 @@ if __name__ == "__main__":
     dp.add_handler(InlineQueryHandler(inline_query, pattern="^.{3,}$"))
 
     # Start the webhook
-    updater.start_polling(dp)
-    #updater.start_webhook(listen="0.0.0.0",
-    #                      port=int(PORT),
-    #                      url_path=TOKEN,
-    #                      webhook_url=f"https://{NAME}.herokuapp.com/{TOKEN}")
+    #updater.start_polling(dp)
+    print("Starting webhook on port " + str(PORT))
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=TOKEN,
+                          webhook_url=SERVER_URL + TOKEN)
     updater.idle()
+
+if __name__ == "__main__":
+    main()
