@@ -1,3 +1,3 @@
-python-telegram-bot>=13.4
+python-telegram-bot==13.4
 pandas==1.5.0
 airportsdata==20221017
