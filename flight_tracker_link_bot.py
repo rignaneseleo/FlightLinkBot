@@ -2,8 +2,8 @@ import logging
 import os
 import sys
 from typing import List
-import script
-from script import DataSet
+import repository
+from repository import DataSet
 
 from telegram import InlineQueryResultArticle, InputTextMessageContent, Update
 from telegram.ext import (
@@ -82,7 +82,7 @@ Examples:
 @FlightLinkBot BGY MDR
 
 Code: https://github.com/rignaneseleo/FlightLinkBot
-Credits: @rignaneseleo ✌🏻"""
+Credits: @leorigna ✌🏻"""
         )
         logger.info(f"Reply sent to user {update.effective_user.id}")
     except TelegramError as e:
