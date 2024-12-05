@@ -114,9 +114,12 @@ def get_flight_results(query: str) -> List[InlineQueryResultArticle]:
                     id=0,
                     thumb_url="https://raw.githubusercontent.com/rignaneseleo/FlightLinkBot/main/res/error.png",
                     title="No flights found, try with a different query",
-                    input_message_content=InputTextMessageContent(query),
+                    input_message_content=InputTextMessageContent(
+                        f"❌ No flights found for query: '{query}'\n\nTry with a different search, for example:\n- Milan Madrid\n- BGY - Madrid\n- BGY MDR"
+                    ),
                 )
             )
+            logger.info(f"No results found for query: {query}")
 
         return results
     except Exception as e:
@@ -129,7 +132,21 @@ async def inline_query(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     try:
         query = update.inline_query.query
         results = get_flight_results(query)
-        await update.inline_query.answer(results)
+        if not results:
+            await update.inline_query.answer(
+                [
+                    InlineQueryResultArticle(
+                        id=0,
+                        # thumb_url="https://raw.githubusercontent.com/rignaneseleo/FlightLinkBot/main/res/error.png",
+                        title="No flights found, try with a different query",
+                        input_message_content=InputTextMessageContent(
+                            f"❌ No flights found for query: '{query}'\n\nTry with a different search, for example:\n- Milan Madrid\n- BGY - Madrid\n- BGY MDR"
+                        ),
+                    )
+                ]
+            )
+        else:
+            await update.inline_query.answer(results)
         logger.info(f"Inline query '{query}' returned {len(results)} results")
     except TelegramError as e:
         logger.error(f"Error handling inline query: {e}")
