@@ -1,4 +1,6 @@
-python-telegram-bot==13.4
+python-telegram-bot[job-queue]==20.6
 numpy==1.23.5
 pandas==1.5.0
 airportsdata==20221017
+python-dotenv
+pylint

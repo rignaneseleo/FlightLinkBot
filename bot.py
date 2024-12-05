@@ -17,6 +17,11 @@ from telegram.ext import (
 from telegram.error import TelegramError
 from dotenv import load_dotenv
 
+# Add these imports at the top
+import pkg_resources
+import subprocess
+import sys
+
 # Configure logging
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -94,7 +99,7 @@ def get_flight_results(query: str) -> List[InlineQueryResultArticle]:
             results.append(
                 InlineQueryResultArticle(
                     id=i,
-                    thumb_url=route.getIconUrl(),
+                    thumbnail_url=route.getIconUrl(),
                     title=f"[{route.code_IATA}] {route.departure_airport.city} ({route.departure_airport.code_iata}) - {route.arrival_airport.city} ({route.arrival_airport.code_iata})",
                     input_message_content=InputTextMessageContent(
                         f"✈️ Follow this {route.airline.name} flight from {route.departure_airport.city} to {route.arrival_airport.city}:\n\n{route.getFlightAwareLink()}"
